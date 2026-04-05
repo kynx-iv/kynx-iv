@@ -20,18 +20,6 @@ system design, AI, and how to grow as a developer.
 
 ---
 
-## Stack
-
-```
-Languages   Go · TypeScript · Python · Java
-Frontend    Next.js · React · Tailwind CSS
-Backend     FastAPI · NestJS · Node.js
-Data        PostgreSQL · Redis · Elasticsearch
-Infra       Docker · Kubernetes · Terraform · AWS
-```
-
----
-
 ## Connect
 
 [![X](https://img.shields.io/badge/@kynxiv__-000?logo=x&logoColor=white)](https://x.com/kynxiv_)
