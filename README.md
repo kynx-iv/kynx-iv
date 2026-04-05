@@ -2,6 +2,8 @@
 
 **Software Architect · Berlin, Germany**
 
+![Profile Views](https://komarev.com/ghpvc/?username=kynx-iv&color=0A66C2&style=flat&label=Profile+Views)
+
 I build scalable systems and write about the craft of engineering —
 system design, AI, and how to grow as a developer.
 
@@ -16,7 +18,13 @@ system design, AI, and how to grow as a developer.
 - **Career** — growing from engineer to architect
 - **Hot takes** — opinions on where the industry is heading
 
+---
+
+## Latest Posts
+
+<!-- BLOG-POSTS:START -->
 → [ikingsley.com](https://ikingsley.com)
+<!-- BLOG-POSTS:END -->
 
 ---
 
