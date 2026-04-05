@@ -1,0 +1,76 @@
+name: Update Blog Posts
+
+on:
+  schedule:
+    - cron: '0 6 * * *'  # Daily at 06:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest posts and update README
+        run: |
+          python3 - <<'EOF'
+          import json
+          import urllib.request
+          import re
+          from datetime import datetime
+
+          url = "https://api.ikingsley.com/api/v1/blog/?limit=5&sort_by=published_at&sort_order=desc"
+
+          try:
+              with urllib.request.urlopen(url, timeout=10) as resp:
+                  data = json.loads(resp.read())
+          except Exception as e:
+              print(f"Failed to fetch posts: {e}")
+              exit(0)
+
+          posts = data.get("posts", [])
+          if not posts:
+              print("No posts returned, skipping update.")
+              exit(0)
+
+          lines = []
+          for post in posts:
+              title = post.get("title", "")
+              slug = post.get("slug", "")
+              if title and slug:
+                  lines.append(f"→ [{title}](https://ikingsley.com/blog/{slug})")
+
+          if not lines:
+              print("No valid posts to render.")
+              exit(0)
+
+          block = "\n".join(lines)
+
+          with open("README.md", "r") as f:
+              content = f.read()
+
+          updated = re.sub(
+              r"<!-- BLOG-POSTS:START -->.*?<!-- BLOG-POSTS:END -->",
+              f"<!-- BLOG-POSTS:START -->\n{block}\n<!-- BLOG-POSTS:END -->",
+              content,
+              flags=re.DOTALL,
+          )
+
+          with open("README.md", "w") as f:
+              f.write(updated)
+
+          print("README updated.")
+          EOF
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet README.md || (
+            git add README.md &&
+            git commit -m "chore: update latest blog posts" &&
+            git push
+          )
