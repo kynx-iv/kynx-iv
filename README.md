@@ -22,7 +22,6 @@ system design, AI, and how to grow as a developer.
 
 ## Connect
 
-[![X](https://img.shields.io/badge/@kynxiv__-000?logo=x&logoColor=white)](https://x.com/kynxiv_)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/kingsley-eze/)
 [![Blog](https://img.shields.io/badge/ikingsley.com-111?logo=ghost&logoColor=white)](https://ikingsley.com)
 
